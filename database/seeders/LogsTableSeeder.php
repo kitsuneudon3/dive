@@ -18,8 +18,8 @@ class LogsTableSeeder extends Seeder
     {
        DB::table('logs')->insert([
         'user_id' => 1,
-        'spot_id' => 1,
         'date' => '2022_08_08',
+        'spot' => '富戸',
         'start_time' => '10:00',
         'end_time' => '10:40',
         'total_time' => '40',
@@ -37,7 +37,7 @@ class LogsTableSeeder extends Seeder
     
         DB::table('logs')->insert([
         'user_id' => 1,
-        'spot_id' => 2,
+        'spot' => '波左間',
         'date' => '2022_09_09',
         'start_time' => '10:00',
         'end_time' => '10:40',
@@ -55,7 +55,7 @@ class LogsTableSeeder extends Seeder
     ]);        
         DB::table('logs')->insert([
         'user_id' => 3,
-        'spot_id' => 1,
+        'spot' => '伊戸',
         'date' => '2022_08_20',
         'start_time' => '10:00',
         'end_time' => '10:40',

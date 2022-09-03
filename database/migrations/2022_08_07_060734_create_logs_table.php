@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('logs', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
-            $table->foreignId('spot_id');
             $table->dateTime('date');
+            $table->string('spot');
             $table->string('start_time')->nullable();
             $table->string('end_time')->nullable();
             $table->integer('total_time')->nullable();

@@ -22,7 +22,6 @@ class PostsTableSeeder extends Seeder
         'body' => '楽しかったです！！',
         'image' =>'wxGZjeZSbYjVhP5zwJNS',
         'movie' =>'w7SAnrw3EnPaaaaaaaaaa',
-        'deleted_at' => new DateTime(),
         'created_at' => new DateTime(),
         'updated_at' => new DateTime(),
     ]);
@@ -33,7 +32,6 @@ class PostsTableSeeder extends Seeder
         'body' => '綺麗でした！！！',
         'image' =>'wxGZjeZSbYjVhP5zaaa',
         'movie' =>'w7SAnrw3EnPaaaaaaaaaa',
-        'deleted_at' => new DateTime(),
         'created_at' => new DateTime(),
         'updated_at' => new DateTime(),
     ]);
@@ -44,7 +42,6 @@ class PostsTableSeeder extends Seeder
         'body' => '楽しかったです！',
         'image' =>'wxGZjeZSbYjVhPiiiii',
         'movie' =>'w7SAnrw3EnPx2hiiiiii',
-        'deleted_at' => new DateTime(),
         'created_at' => new DateTime(),
         'updated_at' => new DateTime(),
     ]);

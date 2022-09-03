@@ -1,8 +1,13 @@
-/*show.css*/
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 article {
     display:flex;
 }
 
+.image-wrap img {
+    height: 300px;
+}
 
 .side {
     width:200px;
@@ -17,5 +22,3 @@ article {
 .commentArea {
     border:solid;
 }
-
-

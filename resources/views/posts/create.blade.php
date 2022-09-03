@@ -1,46 +1,48 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Laravel</title>
-        <!-- Fonts -->
-        <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-        @vite('resources/css/app.css')
-    </head>
-    <body>
-        <h1>サイト名</h1>
-        <h2>＞記事作成</h2>
+<x-app-layout>
+    <x-slot name="header">
+        <h2>記事作成</h2>
+    </x-slot>    
+
         <article>
          <form action="/posts" method="POST" enctype="multipart/form-data">
             @csrf
+            
             <div class="spot">
-                <p>Spot</p>
-                <input type="text" name="spot" placeholder="スポット名"/>
+                <h2>Spot</h2>
+                <select name="post[spot_id]">
+                    <option hidden>選択してください</option>
+                    @foreach($spots as $spot)
+                        <option value="{{ $spot->id }}">{{ $spot->name }}</option>
+                    @endforeach
+                    <p class="spot__error" style="color:red">{{ $errors->first('spot_id') }}</p>
+                </select>
             </div>
+            
             <div class="body">
                 <p>コメント</p>
-                <textarea name="post[body]" placeholder="コメント"></textarea>
+                <textarea name="post[body]" placeholder="コメント">{{ old('body') }}</textarea>
+                <p class="body__error" style="color:red">{{ $errors->first('body') }}</p>
             </div>
             
             <div class="image">
                 <label for="image">画像登録</label>
-                <input type="file" name="image">
+                <input type="file" name="post[image]">
+                <p class="image__error" style="color:red">{{ $errors->first('image') }}</p>
             </div>
 
             
             <input type="submit" value="保存"/>
-        </form>
+    </form>
            <div class="back">[<a href="/">back</a>]</div>
     </body>
     
         <div class="side">
             <div class="box">
-              <p class='home'><a href='/'>ホーム</a></p>
+              <p class='home'><a href='/posts'>ホーム</a></p>
               <p class='create'><a href='/mypage'>マイページ</a></p>
               <p class='create'><a href='/mylog'>マイログ</a></p>
             </div>
         </div>
           
         </article>    
-    </body>
+</x-app-layout>
