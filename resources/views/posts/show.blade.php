@@ -43,8 +43,8 @@
             
             <div class="box">
               <p class='home'><a href='/posts'>ホーム</a></p>
-              <p class='create'><a href='/mypage'>マイページ</a></p>
-              <p class='create'><a href='/mylog'>マイログ</a></p>
+              <p class='create'><a href='/'>マイページ</a></p>
+              <p class='create'><a href='/logs'>マイログ</a></p>
             </div>
         </div>
           

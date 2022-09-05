@@ -40,5 +40,6 @@ Route::controller(LogController::class)->group(function () {
     Route::get('/logs/{log}', 'show');
     Route::get('/logs/{log}/edit', 'edit');
     Route::put('/logs/{log}', 'update');
+    Route::delete('/logs/{log}', 'delete');
     
 });

@@ -20,6 +20,7 @@ class LogsTableSeeder extends Seeder
         'user_id' => 1,
         'date' => '2022_08_08',
         'spot' => '富戸',
+        'dive_point' => null,
         'start_time' => '10:00',
         'end_time' => '10:40',
         'total_time' => '40',
@@ -38,6 +39,7 @@ class LogsTableSeeder extends Seeder
         DB::table('logs')->insert([
         'user_id' => 1,
         'spot' => '波左間',
+        'dive_point' => null,
         'date' => '2022_09_09',
         'start_time' => '10:00',
         'end_time' => '10:40',
@@ -56,6 +58,7 @@ class LogsTableSeeder extends Seeder
         DB::table('logs')->insert([
         'user_id' => 3,
         'spot' => '伊戸',
+        'dive_point' => null,
         'date' => '2022_08_20',
         'start_time' => '10:00',
         'end_time' => '10:40',
