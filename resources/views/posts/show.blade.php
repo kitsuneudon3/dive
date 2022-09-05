@@ -8,9 +8,16 @@
     　　     <div class="post">
                 <p class='user'>{{$post->user->name}}</p>
                 <p class='spot'>{{$post->spot->name}}</p>
-                <p class='image'><img src="{{ '/storage/images/' . $post->image }}" ></p>
+                <p class='image'><img src="{{'/storage/images/' . $post['image']}}" width='400px' height='360px'/></p>
                 <p class='body'>{{$post->body}}</p>
                 <p class="edit">[<a href="/posts/{{ $post->id }}/edit">edit</a>]</p>
+                
+                <form action="/posts/{{ $post->id }}" id="form_{{ $post->id }}" method="post" style="display:inline">
+                  @csrf
+                  @method('DELETE')
+                  <p><button type="submit">[delete]</button></p> 
+                </form>
+                
                 <button type="button">いいね！</button>
                  <div class="commentArea">        
                      <form action="/posts" method="POST">

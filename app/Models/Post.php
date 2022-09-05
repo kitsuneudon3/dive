@@ -31,7 +31,7 @@ class Post extends Model
     }
     
     
-    function getPaginateByLimit(int $limit_count = 5)
+    public function getPaginateByLimit(int $limit_count = 10)
     {
     return $this::with('spot')->orderBy('updated_at', 'DESC')->paginate($limit_count);
     }

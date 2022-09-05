@@ -8,28 +8,19 @@
    　　　 　<input type="submit" name="submit" value="検索">
 　　　　</form>
         
-        <p id="txt"></p>
-        
 　　　　<article>
     　　      <div class="content">
     　　      @foreach ($posts as $post)
-                <div class="post">
+              <div class="post">
                 <p class='spot'><a href="/spots/{{ $post->spot->id }}">{{ $post->spot->name }}</a></p>     
                 <p　class=image>
                     <a href="/posts/{{ $post->id }}">
-                        <img src="{{ '/storage/images/' . $post->image }}" >
+                        <img src="{{'/storage/images/' . $post['image']}}" width='300px' height='240px'/>
                     </a>
                 </p>
                 <p class='user'>{{ $post->user->name }}</p>
-                <p class='body'>{{ $post->body }}</p>                
-        
-                <form action="/posts/{{ $post->id }}" id="form_{{ $post->id }}" method="post" style="display:inline">
-    　　　　　　　　　　　　　　@csrf
-    　　　　　　　　　　　　@method('DELETE')
-    　               <button type="submit", id="btn" >delete</button>
-　　　　　　　
-　　　　　　     </form>
-　　　　　       </div>
+                <p class='body'>{{ $post->body }}</p>       
+              </div>
             @endforeach
           </div>
         

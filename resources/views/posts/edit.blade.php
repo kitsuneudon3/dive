@@ -26,7 +26,7 @@
                 <div>
                     (画像ファイル：{{$post->image}})
                 </div>
-                <img src="{{ '/storage/images/' . $post->image }}" >
+                <img src="{{'/storage/images/' . $post->image}}" width='400px' height='360px'/>
                 @endif
                 
                 <h2>画像登録</h2>

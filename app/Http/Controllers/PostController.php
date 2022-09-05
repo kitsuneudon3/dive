@@ -31,23 +31,25 @@ class PostController extends Controller
     }
     
     
-    public function store(PostRequest $request, Post $post)
+    public function store(Request $request, Post $post)
     {   
         
-        $input=$request['post'];
+        //$input=$request['post'];
         //dd($input);
-        //$post = new post();
-        //$post->spot_id = $request->spot_id;
-        //$post->body = $request->body;
-        //$post->user_id = auth()->user()->id;
+        $post = new post();
+        $post->spot_id = $request->spot_id;
+        $post->body = $request->body;
+        $post->user_id = auth()->user()->id;
     
         if($request->image){
-        $name = $request->file('image')->getClientOriginalName();
-        $request->file('image')->move('storage/images',$name);
-        $post->image = $name;
+           $image=$request->file('image')->getClientOriginalName();
+           $request->file('image')->move('storage/images',$image);
+           $post->image=$image;
         }
+        
         //dd($post);
-        $post->fill($input)->save();
+        //$post->fill($input)->save();
+        $post->save();
         return redirect('/posts/' . $post->id);
     }
     
@@ -59,18 +61,21 @@ class PostController extends Controller
     }
     
     
-    public function update(Postrequest $request, Post $post)
+    public function update(Request $request, Post $post)
     {
+        //$input=$request['post'];
+        $post = new post();
         $post->spot_id = $request->spot_id;
         $post->body = $request->body;
-
+        
         if($request->image){
-        $name = $request->file('image')->getClientOriginalName();
-        $request->file('image')->move('storage/images',$name);
-        $post->image = $name;
+        $image = $request->file('image')->getClientOriginalName();
+        $request->file('image')->move('storage/images',$image);
+        $post->image = $image;
         }
     
         $post->save();
+        //$post->fill($inout)->save();
         return redirect('/posts/' . $post->id);
     }
 

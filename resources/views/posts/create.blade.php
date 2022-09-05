@@ -9,7 +9,7 @@
             
             <div class="spot">
                 <h2>Spot</h2>
-                <select name="post[spot_id]">
+                <select name="spot_id">
                     <option hidden>選択してください</option>
                     @foreach($spots as $spot)
                         <option value="{{ $spot->id }}">{{ $spot->name }}</option>
@@ -20,13 +20,13 @@
             
             <div class="body">
                 <p>コメント</p>
-                <textarea name="post[body]" placeholder="コメント">{{ old('body') }}</textarea>
+                <textarea name="body" placeholder="コメント">{{ old('body') }}</textarea>
                 <p class="body__error" style="color:red">{{ $errors->first('body') }}</p>
             </div>
             
             <div class="image">
                 <label for="image">画像登録</label>
-                <input type="file" name="post[image]">
+                <input type="file" name="image">
                 <p class="image__error" style="color:red">{{ $errors->first('image') }}</p>
             </div>
 
