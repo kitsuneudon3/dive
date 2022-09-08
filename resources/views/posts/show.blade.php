@@ -3,7 +3,7 @@
         <h2>詳細画面</h2>
     </x-slot>
         
-       <article>
+    <article>
     　　<div class="content">       
     　　     <div class="post">
                 <p>{{$post->user->name}}</p>
@@ -52,15 +52,14 @@
                  
             <div class=commentList>
                 <p>コメント一覧</p>
-                    @foreach ($post->post_comments as $post_comment)
+                @foreach ($post->post_comments as $post_comment)
                     <div class="comment">
-                        <p class='spot'><a href="/mypage/{{ $post_comment->user->id }}">
-                        {{ $post->user->name }}</a></p>
+                        <p class='spot'><a href="/mypage/{{ $post_comment->user->id }}"> {{ $post->user->name }}</a></p>
                         <img src="{{'/storage/images/animal_mark01_buta.png'}}" width='50px' height='50px'/>
                         {{--<img src="{{'/storage/images/' . $post_comment->user->image}}" width='50px' height='50px'/>--}}
                         <p>{{ $post_comment->body }}</p>
                     </div>
-                    @endforeach
+                @endforeach
 　　　　    </div>
         </div><!-- /.containt -->
          
@@ -75,5 +74,5 @@
               <p class='create'><a href='/logs'>マイログ</a></p>
             </div>
         </div>
-        </article>
-    </x-app-layout>
+    </article>
+</x-app-layout>

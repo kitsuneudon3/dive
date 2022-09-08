@@ -22,3 +22,12 @@ article {
 .commentArea {
     border:solid;
 }
+
+/*mypage*/
+.profile{
+    display:flex;
+}
+.profile_name{
+    font-size: 40px;
+    margin: 10px;
+}

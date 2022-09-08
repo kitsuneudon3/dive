@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\SpotController;
 use App\Http\Controllers\LogController;
+use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -40,6 +41,15 @@ Route::controller(PostController::class)->group(function () {
     Route::post('/posts/{post}/like', 'like')->middleware('auth');
     Route::post('/posts/{post}/unlike', 'unlike')->middleware('auth');
 });
+
+Route::controller(UserController::class)->group(function () {
+    Route::get('/mypage', 'index');
+    Route::get('/mypage/create', 'create');
+    Route::post('/mypage', 'store');
+    Route::get('/mypage/edit', 'edit');
+    Route::put('/mypage/update', 'update');
+});
+
 
 Route::controller(LogController::class)->group(function () {
     Route::get('/logs', 'index');
