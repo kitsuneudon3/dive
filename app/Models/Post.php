@@ -37,15 +37,19 @@ class Post extends Model
     }
     
     
+    //relation
     public function user()
     {
        return $this->belongsTo(User::class);
     }
     
-    public function likeUsers()
+    
+    //いいね
+    public function likes()
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(User::class, 'likes')->withTimestamps();
     }
+
 
      public function spot()
     {

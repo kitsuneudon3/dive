@@ -39,10 +39,10 @@
            <input type="text" name="log[end_air]"/>
            
            <p class = 'memo'> メモ</p>
-           <textarea name="memo" placeholder="memo"></textarea>
+           <textarea name="log[memo]" placeholder="memo"></textarea>
            
            <p class = 'member'> メンバー</p>
-           <input type="text" name="post[member]" />
+           <input type="text" name="log[member]" />
            
            <div class = 'image'>
                <label for="image">画像登録</label>

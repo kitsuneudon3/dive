@@ -27,10 +27,18 @@ Route::controller(PostController::class)->group(function () {
     Route::get('/posts', 'index');
     Route::post('/posts', 'store');
     Route::get('/posts/create', 'create');
-    Route::get('/posts/{post}', 'show');
+    Route::get('/posts/{post}', 'show' );
     Route::get('/posts/{post}/edit', 'edit');
     Route::put('/posts/{post}', 'update');
     Route::delete('/posts/{post}', 'delete');
+   
+   //コメント機能
+    Route::post('/posts/{post}', 'store_comment' );
+    Route::delete('/posts/{post}', 'delete_comment' );
+   
+    // いいね機能
+    Route::post('/posts/{post}/like', 'like')->middleware('auth');
+    Route::post('/posts/{post}/unlike', 'unlike')->middleware('auth');
 });
 
 Route::controller(LogController::class)->group(function () {

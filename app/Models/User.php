@@ -42,6 +42,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
     
+    
+    //relation
     public function posts()   
     {
        return $this->hasMany(Post::class);  
@@ -53,25 +55,28 @@ class User extends Authenticatable
         return $this->belongsToMany(User::class, 'follows', 'follower_id', 'follow__id');
     }
 
+    
     public function followerUsers()
     {
         return $this->belongsToMany(User::class, 'follows', 'follow_id', 'follower_id');
     }
   
   
-     public function likePosts()
+     public function likes()
     {
-    return $this->belongsToMany(Post::class);
+        return $this->belongsToMany(Post::class, 'likes')->withTimestamps();
     }
 
+    
      public function logs()
     {
-    return $this->hasMany(Log::class);
+         return $this->hasMany(Log::class);
     }
+    
     
      public function post_comments()
     {
-    return $this->hasMany(Post_comment::class);
+         return $this->hasMany(Post_comment::class);
     }
     
     

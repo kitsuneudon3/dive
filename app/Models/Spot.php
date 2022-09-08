@@ -9,18 +9,18 @@ class Spot extends Model
 {
     use HasFactory;
     
-    public function getBySpot(int $limit_count = 5)
+    public function getBySpot(int $limit_count = 10)
     {
-     return $this->posts()->with('spot')->orderBy('updated_at', 'DESC')->paginate($limit_count);
+        return $this->posts()->with('spot')->orderBy('updated_at', 'DESC')->paginate($limit_count);
     }
     
      public function posts()
     {
-    return $this->hasMany(Post::class);
+        return $this->hasMany(Post::class);
     }
     
      public function logs()
     {
-    return $this->hasMany(Log::class);
+        return $this->hasMany(Log::class);
     }
 }

@@ -13,7 +13,6 @@
                <a href="/logs/{{ $log->id }}"><img src="{{ '/storage/images/' . $log->image }}" width='300px' height='240px'/></a>
            </div>
         </div>
-    
         @endforeach
 
     　　　　<div class="side">

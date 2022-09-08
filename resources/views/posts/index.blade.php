@@ -10,8 +10,8 @@
         
 　　　　<article>
     　　      <div class="content">
-    　　      @foreach ($posts as $post)
-              <div class="post">
+    　　  @foreach($posts as $post)
+    　　      <div class="post">
                 <p class='spot'><a href="/spots/{{ $post->spot->id }}">{{ $post->spot->name }}</a></p>     
                 <p　class=image>
                     <a href="/posts/{{ $post->id }}">
