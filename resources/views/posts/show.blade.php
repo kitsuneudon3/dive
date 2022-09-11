@@ -11,17 +11,19 @@
                 <p><img src="{{'/storage/images/' . $post['image']}}" width='400px' height='360px'/></p>
                 <p>{{$post->body}}</p>
                 <p>{{ $post->updated_at }}</p>
-                <p class="edit">[<a href="/posts/{{ $post->id }}/edit">edit</a>]</p>
                 
-                <form action="/posts/{{ $post->id }}" id="form_{{ $post->id }}" method="post" style="display:inline">
-                  @csrf
-                  @method('DELETE')
-                  <p><button type="submit">[delete]</button></p> 
-                </form>
-                
+                @if($post->user_id == Auth::id())
+                   <p class="edit">[<a href="/posts/{{ $post->id }}/edit">edit</a>]</p>
+                   <form action="/posts/{{ $post->id }}/delete" id="form_{{ $post->id }}" method="post" style="display:inline">
+                     @csrf
+                     @method('DELETE')
+                     <p><button type="submit">[delete]</button></p> 
+                    </form>
+                @endif
             </div>
        
         <!--いいね-->
+        @if (Auth::id() != $post->user_id)        
         　　@if($post->likes()->where('user_id', Auth::id())->exists())
               <div class="like">
                 <form action="/posts/{{ $post->id }}/unlike" method="POST">
@@ -39,9 +41,10 @@
                 </form>
               </div><!-- /.like -->
             @endif         
-            
+        @endif
+        
             <div class="commentArea">        
-                <form action="/posts/{post}" method="POST">
+                <form action="/posts/{{$post->id}}/comment" method="POST">
                     @csrf
                     <p>コメント</p>
                     <input name="post_comment[post_id]" type="hidden" value="{{ $post->id }}">
@@ -52,25 +55,27 @@
                  
             <div class=commentList>
                 <p>コメント一覧</p>
-                @foreach ($post->post_comments as $post_comment)
+                @foreach ($post_comments as $post_comment)
                     <div class="comment">
                         <p class='spot'><a href="/mypage/{{ $post_comment->user->id }}"> {{ $post->user->name }}</a></p>
                         <img src="{{'/storage/images/animal_mark01_buta.png'}}" width='50px' height='50px'/>
                         {{--<img src="{{'/storage/images/' . $post_comment->user->image}}" width='50px' height='50px'/>--}}
-                        <p>{{ $post_comment->body }}</p>
+                        <p>{{ $post_comment->comment }}</p>
                     </div>
+                    <form action={{route('comment.delete', $post_comment)}} id="form_{{ $post->id }}" method="post" style="display:inline">
+                     @csrf
+                     @method('DELETE')
+                     <p><button type="submit">[delete]</button></p> 
+                    </form>
                 @endforeach
 　　　　    </div>
         </div><!-- /.containt -->
          
         <div class="side">
-             
-             <x-button class='create'><a href='/posts/create'>作成</a>
-              </x-button>
-            
+            <x-button class='create'><a href='/posts/create'>作成</a></x-button>
             <div class="box">
               <p class='home'><a href='/posts'>ホーム</a></p>
-              <p class='create'><a href='/'>マイページ</a></p>
+              <p class='create'><a href='/mypage/{{ Auth::user()->id }}'>マイページ</a></p>
               <p class='create'><a href='/logs'>マイログ</a></p>
             </div>
         </div>

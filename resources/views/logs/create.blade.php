@@ -4,7 +4,7 @@
     </x-slot>
     
     
-    <form action="/logs" method="POST"　enctype="multipart/form-data">
+    <form action="/logs/store" method="POST"　enctype="multipart/form-data">
             @csrf
     
       <div class="log">

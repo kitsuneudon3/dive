@@ -20,11 +20,11 @@
            <label>メンバー：</label>
            <p>{{ $log->member}}</p>
            <div class = 'image'>
-               <img src="{{ '/storage/images/' . $log->image }}">
+               <img src="{{'/storage/images/' . $log['image']}}" width='300px' height='240px'/></a>
            </div>
               <p class="edit">[<a href="/logs/{{ $log->id }}/edit">edit</a>]</p>
               
-            <form action="/logs/{{ $log->id }}" id="form_{{ $log->id }}" method="post" style="display:inline">
+            <form action="/logs/{{ $log->id }}/delete" id="form_{{ $log->id }}" method="post" style="display:inline">
                   @csrf
                   @method('DELETE')
                   <p><button type="submit">[delete]</button></p> 

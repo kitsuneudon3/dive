@@ -21,8 +21,20 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'image',
+        'body',
     ];
 
+    protected static function boot()
+    {
+        parent::boot();
+
+        // 保存時user_idをログインユーザーに設定
+        self::saving(function($stock) {
+        $stock->user_id = \Auth::id();
+        });
+    }
+    
     /**
      * The attributes that should be hidden for serialization.
      *

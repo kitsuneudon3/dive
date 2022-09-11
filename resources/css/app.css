@@ -5,6 +5,10 @@ article {
     display:flex;
 }
 
+.main {
+    display:frex;
+}
+
 .image-wrap img {
     height: 300px;
 }
@@ -24,9 +28,7 @@ article {
 }
 
 /*mypage*/
-.profile{
-    display:flex;
-}
+
 .profile_name{
     font-size: 40px;
     margin: 10px;

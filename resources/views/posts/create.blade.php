@@ -4,17 +4,17 @@
     </x-slot>    
 
         <article>
-         <form action="/posts" method="POST" enctype="multipart/form-data">
+         <form action="/posts/store" method="POST" enctype="multipart/form-data">
             @csrf
             
             <div class="spot">
                 <h2>Spot</h2>
                 <select name="spot_id">
-                    <option hidden>選択してください</option>
-                    @foreach($spots as $spot)
+                <option value="" selected disabled>選択してください</option>
+                　　@foreach($spots as $spot)
                         <option value="{{ $spot->id }}">{{ $spot->name }}</option>
                     @endforeach
-                    <p class="spot__error" style="color:red">{{ $errors->first('spot_id') }}</p>
+                    <p class="spot__error" style="color:red">{{ $errors->first('spot_id') }}</p>    
                 </select>
             </div>
             
@@ -40,7 +40,7 @@
             <div class="box">
               <p class='home'><a href='/posts'>ホーム</a></p>
               <p class='create'><a href='/mypage'>マイページ</a></p>
-              <p class='create'><a href='/mylog'>マイログ</a></p>
+              <p class='create'><a href='/logs'>マイログ</a></p>
             </div>
         </div>
           

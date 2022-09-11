@@ -2,23 +2,31 @@
     <x-slot name="header">
         <h2>Mypage</h2>
     </x-slot>
-    
-    <div class=profile>
-       <!--<p><img src="{{'/storage/images/animal_mark01_buta.png'}}" width='100px' height='100px'/></p>-->
-       <p><img src="{{'/storage/images/' . $post_comment->user->image}}" width='50px' height='50px'/></p>
-       <p class=profile_name>{{$user->name}}</p>
-    </div>
-       <h2>自己紹介</h2>
-       <p>{{$user->body}}<p>
+    <div class=main>
+        <div class=profile>
+            <!--<p><img src="{{'/storage/images/animal_mark01_buta.png'}}" width='100px' height='100px'/></p>-->
+            <p><img src="{{'/storage/images/' . $user->image}}" width='200px' height='200px'/></p>
+            <p class=profile_name>{{ $user->name}}</p>
+        </div>
+            <h2>自己紹介</h2>
+            <p>{{$user->body}}<p>
         
-    <!--投稿-->
-    <h2>投稿一覧</h2>
+        @if($user->id == Auth::id())
+            <p class="edit">[<a href="/mypage/{{ $user->id }}/edit">edit</a>]</p>    
+        @endif
     
-    <!--@foreach($posts as $post)-->
-        <!--<div class="post">-->
-        <!--    <p class='spot'><a href="/spots/{{ $post->spot->id }}">{{ $post->spot->name }}</a></p>     -->
-        <!--    <p　class=image><a href="/posts/{{ $post->id }}"><img src="{{'/storage/images/' . $post['image']}}" width='300px' height='240px'/></a></p>-->
-        <!--    <p class='body'>{{ $post->body }}</p>       -->
-        <!--</div>-->
-    <!--@endforeach-->
+        <!--投稿-->
+        <h1>＜投稿一覧＞</h1>
+       
+    </div>
+    <div class=side>
+        <x-button class='create'><a href='/posts/create'>作成</a></x-button>
+        <div class="box">
+            <p><a href='/posts'>ホーム</a></p>
+            <p><a href='/mypage/{{ $user->id }}'>マイページ</a></p>
+            <p><a href='/logs'>マイログ</a></p>
+        </div>
+    
+    </div>
+    　　
 </x-app-layout>

@@ -11,7 +11,10 @@ class PostRequest extends FormRequest
      *
      * @return bool
      */
-
+    public function authorize()
+    {
+        return true;
+    }
 
     /**
      * Get the validation rules that apply to the request.
@@ -22,7 +25,7 @@ class PostRequest extends FormRequest
     {
         return [
             'spot_id' => 'required',
-            'body' => 'required|string|max:4000',
+            'body' => 'required|string',
             'image' => 'required',
         ];
     }

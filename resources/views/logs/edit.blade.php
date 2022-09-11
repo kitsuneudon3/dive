@@ -4,7 +4,7 @@
     </x-slot>
     
     
-    <form action="/logs/{{ $log->id }}" method="POST"　enctype="multipart/form-data">
+    <form action="/logs/{{ $log->id }}/update" method="POST"　enctype="multipart/form-data">
             @csrf
             @method('PUT')
             

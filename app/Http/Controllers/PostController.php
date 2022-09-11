@@ -22,8 +22,8 @@ class PostController extends Controller
     
     public function show(Post $post, Post_comment $post_comment)
     {
-        return view('posts/show')->with(['post' => $post])
-                                 ->with(['post_comments' => $post_comment]);
+        return view('posts/show')->with(['post' => $post, 'post_comments' => $post_comment->where('post_id', '=', $post->id)->get()]);
+                                //  ->with(['post_comments' => $post_comment]);
     }
 
     
@@ -33,7 +33,7 @@ class PostController extends Controller
     }
     
     
-    public function store(Request $request, Post $post)
+    public function store(PostRequest $request, Post $post)
     {   
         
         //$input=$request['post'];
@@ -63,7 +63,7 @@ class PostController extends Controller
     }
     
     
-    public function update(Request $request, Post $post)
+    public function update(PostRequest $request, Post $post)
     {
         //$input=$request['post'];
         $post = new post();
@@ -102,21 +102,7 @@ class PostController extends Controller
     }
     
     
-    //コメント機能
-    public function store_comment(Request $request, Post_comment $post_comment, Post $post)
-    {   
-        $post = $this->post;
-        $input = $request['post_comment'];
-        //dd($input);
-        $post_comment->fill($input)->save();
-        return redirect('/posts/' . $post->id);
-    }
-    
-    public function delete_comment(Post_comment $post_comment)
-    {
-        $post_comment->delete();
-        return redirect('/posts/' . $post->id);
-    }
+
     
     
 }

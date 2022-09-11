@@ -4,7 +4,7 @@
     </x-slot>
 　　　　
 　　<div class="content">
-        <form action="/posts/{{ $post->id }}" method="POST" enctype="multipart/form-data">
+        <form action="/posts/{{ $post->id }}/update" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <div class="spot">

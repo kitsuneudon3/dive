@@ -20,8 +20,8 @@ class Post_comment extends Model
         parent::boot();
 
         // 保存時user_idをログインユーザーに設定
-        self::saving(function($stock) {
-        $stock->user_id = \Auth::id();
+        self::saving(function($post_comment) {
+        $post_comment->user_id = \Auth::id();
         });
     }
  
