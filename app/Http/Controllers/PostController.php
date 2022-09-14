@@ -115,6 +115,7 @@ class PostController extends Controller
         return redirect('/posts');
     }
     
+   
     // いいね
     public function like(Request $request, Post $post)
     {

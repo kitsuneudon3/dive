@@ -11,6 +11,28 @@
             <p><img src="{{'/storage/images/animal_mark01_buta.png'}}" width='100px' height='100px'/></p>
             @endif
             <p class=profile_name>{{ $user->name}}</p>
+        
+        <!--フォロー機能-->
+        @if (Auth::id() != $user->id)        
+        　　@if($user->follows()->where('follow_id', Auth::id())->exists())
+              <div class="follow">
+                <form action="/mypage/{{ $user->id }}/unfollow" method="POST">
+                  @csrf
+                  <input type="submit" value="フォロー解除">
+                  <p>フォロワー数:{{ $user->follows()->count() }}</p>
+                </form>
+              </div><!-- /.follow -->
+            @else
+              <div class="follow">
+                <form action="/mypage/{{ $user->id }}/follow" method="POST">
+                  @csrf
+                    <input type="submit" value="フォロー">
+                    <p>フォロワー数:{{ $user->follows()->count() }}</p>
+                </form>
+              </div><!-- /.follow -->
+            @endif         
+        @endif
+        
         </div>
             <h2>自己紹介</h2>
             <p>{{ $user->body }}<p>

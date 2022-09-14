@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User; 
 use App\Models\Post;
+use App\Models\Follow;
 
 class UserController extends Controller
 {
@@ -50,5 +51,18 @@ class UserController extends Controller
        $user->fill($input)->save();
        return redirect('/mypage/' . $user->id);
     }
+    
+    // フォロー機能
+    public function follow(Request $request, User $user)
+    {
+        $user->follows()->attach($request->user()->id);
+        return redirect('/mypage/' . $user->id );
+    }
 
+    
+    public function unfollow(Request $request, User $user)
+    {
+        $user->follows()->detach($request->user()->id);
+        return redirect('/mypage/' . $user->id );
+    }
 }
