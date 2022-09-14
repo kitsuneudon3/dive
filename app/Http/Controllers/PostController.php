@@ -4,21 +4,49 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use App\Models\Spot;
+use App\Models\User;
 use App\Models\Post_comment;
 use App\Http\Requests\PostRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Eloquent\Builder;
 
 
 class PostController extends Controller
 {
     public function index(Post $post)
     {
+     
+        //  $search = $request->input('search');
+        //  $query = User::query();
+         
       // $post=\DB::table('posts')->get();
        //dd($post);
-        return view('posts/index')->with(['posts' => $post->getPaginateByLimit()]);
-    }//$postsという変数は、インスタンスを配列として複数保持できるcollectionと呼ばれるデータ。
+        return view('posts/index')
+              ->with(['posts' => $post->getPaginateByLimit(), 
+              ]);
+    }
     
+    public function search(Request $request)
+    {
+        // dd($request->search);
+        // $post = Post::where('spot_id', 'like', "%{$request->search}%")->paginate(5);
+        $keyword=$request->input('search');
+        $post = Post::whereHas('spot', function (Builder $query) use ($keyword) {
+                $query->where('name', 'like', '%' . $keyword . '%');
+                 })
+                 ->orWhereHas('user', function (Builder $query) use ($keyword){
+                    $query->where('name', 'like', '%' . $keyword . '%');
+                     
+                 })
+                 ->paginate(5);
+
+        
+        return view('posts/index')
+              ->with(['posts' => $post
+              ]);
+
+    }
     
     public function show(Post $post, Post_comment $post_comment)
     {

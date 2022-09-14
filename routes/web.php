@@ -29,6 +29,7 @@ Route::get('/spots/{spot}', [SpotController::class, 'index']);
 
 Route::controller(PostController::class)->group(function () {
     Route::get('/posts', 'index')->middleware('auth');
+    Route::post('/posts/search', 'search');
     Route::post('/posts/store', 'store');
     Route::get('/posts/create', 'create');
     Route::get('/posts/{post}', 'show' )->name('post.show');
@@ -50,6 +51,9 @@ Route::controller(UserController::class)->group(function () {
     Route::get('/mypage/{user}', 'index');
     Route::get('/mypage/{user}/edit', 'edit');
     Route::put('/mypage/{user}/update', 'update');
+    Route::get('/mypage/{user}/editUser', 'editUser')->middleware('auth');
+    Route::put('/mypage/{user}/updateUser', 'updateUser');
+    
 });
 
 

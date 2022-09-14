@@ -33,7 +33,7 @@ class LogController extends Controller
         if($request->image){
            $name = $request->file('image')->getClientOriginalName();
            $request->file('image')->move('storage/images',$name);
-           $post->image = $name;
+           $log->image = $name;
         }
     
        $log->fill($input)->save();

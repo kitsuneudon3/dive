@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
-            $table->foreignId('spot_id');
+            $table->foreignId('user_id')->index('name_index');
+            $table->foreignId('spot_id')->index('spot_index');
             $table->text('body')->nullable();
             $table->string('movie')->nullable();
             $table->string('image')->nullable();

@@ -31,7 +31,6 @@ class LogsTableSeeder extends Seeder
         'memo' => '見れた魚：コブダイ、サンマ、ジンベエザメ', 
         'member' => '鈴木、佐藤、小林',
         'image' => 'm3313.jpg',
-        'deleted_at' => new DateTime(),
         'created_at' => new DateTime(),
         'updated_at' => new DateTime(),
     ]);
@@ -51,7 +50,6 @@ class LogsTableSeeder extends Seeder
         'memo' => '見れた魚：コブダイ、サンマ、ジンベエザメ', 
         'member' => '鈴木、佐藤、小林',
         'image' => 'ks03.jpg',
-        'deleted_at' => new DateTime(),
         'created_at' => new DateTime(),
         'updated_at' => new DateTime(),
     ]);        
@@ -70,7 +68,6 @@ class LogsTableSeeder extends Seeder
         'memo' => '見れた魚：コブダイ、サンマ、ジンベエザメ', 
         'member' => '鈴木、佐藤、小林',
         'image' => 'photo2.jpg',
-        'deleted_at' => new DateTime(),
         'created_at' => new DateTime(),
         'updated_at' => new DateTime(),
     ]);

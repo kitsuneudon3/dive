@@ -55,7 +55,7 @@
                  
             <div class=commentList>
                 <p>コメント一覧</p>
-                @foreach ($post_comments as $post_comment)
+                @foreach($post_comments as $post_comment)
                     <div class="comment">
                         <p class='spot'><a href="/mypage/{{ $post_comment->user->id }}"> {{ $post->user->name }}</a></p>
                         <img src="{{'/storage/images/animal_mark01_buta.png'}}" width='50px' height='50px'/>

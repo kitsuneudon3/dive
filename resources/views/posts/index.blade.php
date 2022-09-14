@@ -2,13 +2,16 @@
     <x-slot name="header">
         <h2>Home</h2>
     </x-slot>    
-        <form action="https://586b2d2413c24a7bb3586e281080a9c6.vfs.cloud9.ap-northeast-1.amazonaws.com/">
- 　　　　　　 <p>ユーザー名かスポット名を入力してください。</p>
-  　　　　　 <input type="search" name="search" placeholder="キーワードを入力">
-   　　　 　<input type="submit" name="submit" value="検索">
-　　　　</form>
+        <form action="/posts/search" method="POST">
+            @csrf
+        <input type="search" placeholder="ユーザー名かスポット名を記述してください。" name="search" >        
+        <button type="submit">検索</button>
+        <button>
+            <a href="/posts" class="text-white">クリア</a>
+        </button>
+        </form>
         
-　　　　<article>
+    <article>
     　　      <div class="content">
     　　          @foreach($posts as $post)
                     <div class="post">
@@ -29,7 +32,7 @@
             
                 <div class="box">
                     <p class='home'><a href='/posts'>ホーム</a></p>
-                    <p class='create'><a href='/mypage'>マイページ</a></p>
+                    <p class='create'><a href='/mypage/{{ Auth::user()->id }}'>マイページ</a></p>
                     <p class='create'><a href='/logs'>マイログ</a></p>
                 </div>
             </div>
